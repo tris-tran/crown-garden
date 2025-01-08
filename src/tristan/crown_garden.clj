@@ -5,7 +5,7 @@
 (def garden-size [10 10])
 
 (def types [:wall :garden])
-(defrecord GardenTile [ttype tprint-debug])
+(defrecord GardenTile [id neighbours ttype tprint-debug])
 (defrecord Garden [garden width height])
 
 (defn garden-print-tile
@@ -14,19 +14,12 @@
     :wall "#"
     "+"))
 
-(def garden-wall (GardenTile. :wall garden-print-tile))
-
-(def garden-get-col
-  [col width heigth]
-  (for [row (range height)]
-    (+ width (* row col))))
-
 (defn create-empty-garden
   [width height]
   (let [size (* width height)
-        garden (make-array GardenTile size)]
-    (for [tile garden]
-      (assoc tile :ttype :wall))))
+        garden-tiles (make-array GardenTile size)]
+    (for [tile garden-tiles]
+      (assoc tile :ttype :garden))))
 
 (defn garden-get-tile
   [garden x y]
