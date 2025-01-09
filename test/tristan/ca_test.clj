@@ -11,14 +11,14 @@
     (println (format "Printing neighbours for (%s %s)" x y))
     (pprint/pprint (moore-neighborhood x y))))
 
-(deftest empty-latice
+(deftest empty-lattice
   (let [width 5
         height 5
         tile-creator (fn [] ())
         fn-neighborhood moore-neighborhood
-        latice (create-emtpy-latice width height tile-creator fn-neighborhood)]
-    (println (format "Creating latice (%sx%s)" width height))
-    (pprint/pprint latice)))
+        lattice (create-emtpy-lattice width height tile-creator fn-neighborhood)]
+    (println (format "Creating lattice (%sx%s)" width height))
+    (pprint/pprint lattice)))
 
 
 
